@@ -1,6 +1,8 @@
 # KU-TANS標準起動スクリプト
 - 当NSおよび某NS用に作成したスクリプトです
 - 可能な限り一般化してありますが、一部に癖が残っていますのでご注意ください
+- pak.pakname.exeおよびpak.pakname_server.exeのiconは以下のものを利用させて頂きました
+    - https://github.com/aburch/simutrans/blob/master/stormoog.ico
 ## 内容物
 ### pak.pakname.ps1
 - windows用の起動スクリプトです
