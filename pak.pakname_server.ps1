@@ -1,10 +1,14 @@
-# 起動exeの名前をPIDをプロセス経由で取得
-$Process_name = (Get-Process -Id $PID).name
-$ver = Import-Csv version
-
+# 起動exeの名前を取得
+if ($MyInvocation.MyCommand.CommandType -eq "ExternalScript"){ 
+    $Process_name = [System.IO.Path]::GetFileNameWithoutExtension($MyInvocation.MyCommand)
+}
+else {
+    $Process_name = [System.IO.Path]::GetFileNameWithoutExtension([Environment]::GetCommandLineArgs()[0])
+}
 # _serverを消す
 $Process_name = $Process_name.remove($Process_name.length -7,7)
 
+$ver = Import-Csv version
 $ver_server = Import-Csv version_server
 
 # 起動ファイル（バージョン名）取得
@@ -13,8 +17,8 @@ foreach($a in $ver){
         $obj = $a.object
         $ip = $a.ip
 
-        $basename = $obj.remove($obj.length -4,4)
-        $path = ".\" + $basename + "_server" + ".exe"
+        $basename = [System.IO.Path]::GetFileNameWithoutExtension($obj)
+        $path = "./" + $basename + "_server"
 
         foreach ($b in $ver_server) {
             if ($b.pakName -eq $Process_name) {
@@ -31,7 +35,7 @@ foreach($a in $ver){
             $port = $ip.remove(0,$port_colon+1)
         }
         # 起動したいpakset名で入れる
-        $arglist = "-server $port -server_admin_pw $pass -objects $Process_name\ -lang ja $option"
+        $arglist = "$option -server $port -server_admin_pw $pass -objects $Process_name/ -lang ja"
 
         if($Args){
             $arglist = $Args + " $arglist"
