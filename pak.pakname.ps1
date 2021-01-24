@@ -13,10 +13,11 @@ foreach($a in $ver){
     if ($a.pakName -eq $Process_name) {
         $obj = $a.object
         $ip = $a.ip
+        $option = $a.option
         $path = "./" + $obj
 
         # 起動したいpakset名で入れる
-        $arglist = "-objects $Process_name/ -lang ja -ip $ip"
+        $arglist = "$option -objects $Process_name/ -lang ja -ip $ip"
         # 引数の文字列を作る
         if($Args){
             $arglist = $Args + " $arglist"

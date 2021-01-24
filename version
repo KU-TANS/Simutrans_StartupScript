@@ -1,4 +1,4 @@
-pakName, object, ip
+pakName, object, ip , option
 pak.nippon, sim-WinGDI-OTRPv27_2.exe, 12.34.567.890
-pak128japan, sim-WinGDI-OTRPv28_3.exe, 12.34.567.890:13352
+pak128japan, sim-WinGDI-OTRPv28_3.exe, 12.34.567.890:13352, -showoverlay
 

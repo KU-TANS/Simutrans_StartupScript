@@ -1,5 +1,5 @@
 # KU-TANS標準起動スクリプト
-- 弊NSおよび某NS用に作成したスクリプトです
+- 弊NS（KU-TANS）および某NS用に作成したスクリプトです
 - 可能な限り一般化してありますが、一部に癖が残っていますのでご注意ください
 - pak.pakname.exeおよびpak.pakname_server.exeのiconは以下のものを利用させて頂きました
     - https://github.com/aburch/simutrans/blob/master/stormoog.ico
@@ -74,13 +74,15 @@
 - csv形式です
 - 全てのスクリプト実行時に必要です
 - 記入項目
-    - pakフォルダ名
-    - 使用する本体の名前
-    - IPアドレス（ポート含む）
+    - pakフォルダ名（pakName）
+    - 使用する本体の名前（object）
+    - IPアドレス（ポート含む）（ip）
         - IPさえあればportは書かなくても動きます（この時":"は書かないでください）
             - この際デフォルトの13353ポートになります
         - IPアドレスはserver起動時に必要な物ですが、弊NSの都合上こちらに入ってます
             - 通常起動時には空欄でも問題ありません
+    - 追加オプション（option）
+        - ショートカットから引数を与えることも可能です
 - デフォルトで例が書いてあります
     - 1行目を除き、不要なものは消しても問題ありません
 
@@ -90,15 +92,12 @@
     - pak.pakname_server.ps1
     - pak.pakname_server.exe
 - 記入項目
-    - pakフォルダ名
-    - nettoolパスワード(nettoolを使用しないときは不要)
-    - 起動追加option
-        - optionは以下のものが後述の起動スクリプトに書かれていますので不要です
-            - server
-            - server_admin_pw
-            - objects
-            - lang ja
+    - pakフォルダ名（pakName）
+    - nettoolパスワード（nettoolを使用しないときは不要）（pass）
+    - 起動追加option（option）
         - ショートカットから引数を与えることも可能です
+- デフォルトで例が書いてあります
+    - 1行目を除き、不要なものは消しても問題ありません
 
 ## フォルダ構成
 - 必要なファイルをSimutrans本体およびpaksetフォルダと同様の階層に配置してください
@@ -106,3 +105,7 @@
 ## ライセンス
 - スクリプトはMITライセンスです
 - 実行ファイルはアイコンにSimutrans Standardのicon画像を利用しているため、[Artistic License](https://github.com/aburch/simutrans/blob/master/simutrans/license.txt)に従います
+
+## 変更履歴
+- 2021/01/24
+    - versionファイルにoptionの項目を追加し、起動スクリプトで追加のオプションを設定可能に
